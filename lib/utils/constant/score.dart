@@ -1,7 +1,4 @@
-class TScore {
-  // usia
-  static const usia = [19, 25, 34, 54];
-
+  class TScore {
   // maritial status
   static const menikah = 'Menikah';
   static const single = 'Single';
