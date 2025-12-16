@@ -39,6 +39,12 @@ class TScore {
     scoopy: 25000000,
   };
 
+  static const minimalUangMuka = {
+    beat: 2200000,
+    vario:2600000,
+    scoopy: 2500000
+  };
+
   // tenor
   static const tenor = {12: 32, 24: -1, 36: -9, 48: -26};
 

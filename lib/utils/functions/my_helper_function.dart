@@ -1,6 +1,12 @@
+import 'package:age_calculator/age_calculator.dart';
 import 'package:kalkulator_kredit/utils/constant/score.dart';
 
 class Demografi {
+  static int usia({required DateTime tanggalLahir}) {
+    DateDuration duration = AgeCalculator.age(tanggalLahir);
+    return duration.years;
+  }
+
   static int? scoreUsia({required int umurUser}) {
     if (umurUser >= 19 && umurUser <= 25) {
       return -9;

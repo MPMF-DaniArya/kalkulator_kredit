@@ -26,11 +26,6 @@ class CalculatorState {
   // variabel keterlambatan bayar
   String? selectedPernahTerlambat;
 
-  // variabel hasil akhir
-  int? creditScoringUser;
-  String? risikoUser;
-  String? actionUser;
-
   CalculatorState() {
     formkey = GlobalKey<FormState>();
     lamaKerjaController = TextEditingController();
@@ -41,7 +36,7 @@ class CalculatorState {
     selectedPekerjaan = null;
     selectedBrandMotor = null;
     selectedTenor = null;
-    estimasiHarga = 0; // Bisa null atau 0
+    estimasiHarga = 0;
     minUangMuka = 0;
     selectedPunyaKreditYangAktif = null;
     selectedApakahBank = null;
@@ -49,9 +44,6 @@ class CalculatorState {
     selectedApakahFintech = null;
     selectedApakahLainnya = null;
     selectedPernahTerlambat = null;
-    creditScoringUser = 0;
-    risikoUser = '-';
-    actionUser = '-';
   }
 
   void dispose() {
