@@ -1,4 +1,4 @@
-  class TScore {
+class TScore {
   // maritial status
   static const menikah = 'Menikah';
   static const single = 'Single';
@@ -16,7 +16,7 @@
   static const homeStatus = {
     sendiri: 5,
     orangTua: -2,
-    keluarga: 4,
+    keluarga: -4,
     kontrakOrKost: -4,
     perusahaan: 2
   };
@@ -46,26 +46,11 @@
   static const ya = 'Ya';
   static const tidak = 'Tidak';
 
-  static const kreditAktif = {ya: -2, tidak: 46};
-
   // penyedia fasilitas kredit
   static const bank = 'Bank';
   static const multifinance = 'Multifinance';
   static const fintech = 'Fintech';
   static const lainnya = 'Lainnya';
-
-  static const penyediaFasilitasKredit = {
-    bank: {ya: -7, tidak: 0},
-    multifinance: {ya: -7, tidak: 0},
-    fintech: {ya: -7, tidak: 0},
-    lainnya: {ya: -7, tidak: 0},
-  };
-
-  // keterlambatan bayar 12 bulan
-  static const lamaKeterlambatan = {
-    ya: -41,
-    tidak: 60
-  };
 
   //  kategori risk & action
   static const e3 = 'E3';
@@ -109,7 +94,16 @@
   };
 
   static const reject = 'Reject';
-  static const needSurveyAndCreditCommitteeReview = 'Need Survey & Credit Committee Review';
+  static const needSurveyAndCreditCommitteeReview =
+      'Need Survey & Credit Committee Review';
   static const needSurvey = 'Need Survey';
   static const instantApproval = 'Instant Approval';
+
+  static const kategoriAction = {
+    veryHighRisk: reject,
+    averageRisk: needSurveyAndCreditCommitteeReview,
+    veryLowRisk: needSurvey,
+    a2: instantApproval,
+    a1: instantApproval
+  };
 }
