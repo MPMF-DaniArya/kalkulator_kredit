@@ -132,8 +132,10 @@ class CalculatorLogic extends GetxController {
 
     creditScoreUser.value = finalScore;
     risikoUser.value = finalGrade;
-    actionUser.value = TScore.kategoriAction[finalGrade]!;
-    print(TScore.kategoriAction[finalGrade]);
+    String? action = TScore.kategoriRisk[finalGrade];
+    actionUser.value = finalGrade == TScore.a2 || finalGrade == TScore.a1
+        ? TScore.kategoriAction[finalGrade]!
+        : TScore.kategoriAction[action]! ?? 'Action tidak diketahui';
     update();
   }
 
