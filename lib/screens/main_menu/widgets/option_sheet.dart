@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kalkulator_kredit/screens/main_menu/calculator_logic.dart';
-import 'package:kalkulator_kredit/utils/constant/score.dart';
+import 'package:kalkulator_kredit/utils/constant/colors.dart';
 
-class SelectBrandMotor extends StatelessWidget {
-  const SelectBrandMotor({super.key});
+class OptionSheet extends StatelessWidget {
+  const OptionSheet(
+      {super.key,
+      required this.options,
+      required this.title,
+      this.selectedValue,
+      required this.onSelect});
+
+  final String title;
+  final List<String> options;
+  final String? selectedValue;
+  final Function(String) onSelect;
 
   @override
   Widget build(BuildContext context) {
     final logic = Get.find<CalculatorLogic>();
-
-    final List<String> options = [
-      TScore.beat,
-      TScore.scoopy,
-      TScore.vario,
-    ];
 
     return Container(
       padding: const EdgeInsets.only(bottom: 20),
@@ -37,20 +41,18 @@ class SelectBrandMotor extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20),
             child: Text(
-              "Pilih Home Status",
+              title,
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
             ),
           ),
           ...options.map((option) {
-            bool isSelected = logic.state.selectedBrandMotor == option;
+            bool isSelected = selectedValue == option;
 
             return ListTile(
               onTap: () {
-                logic.state.selectedBrandMotor = option;
-
-                logic.update();
+                onSelect(option);
 
                 Get.back();
               },
@@ -62,7 +64,7 @@ class SelectBrandMotor extends StatelessWidget {
                 ),
               ),
               trailing: isSelected
-                  ? const Icon(Icons.check_circle, color: Colors.green)
+                  ? const Icon(Icons.check_circle, color: TColors.primaryColor)
                   : const Icon(Icons.circle_outlined, color: Colors.grey),
               contentPadding:
                   const EdgeInsets.symmetric(horizontal: 24, vertical: 4),

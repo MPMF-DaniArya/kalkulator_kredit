@@ -6,12 +6,22 @@ class TScore {
 
   static const scoreMaritialStatus = {menikah: 6, single: 0, dudaOrJanda: -14};
 
+  static const maritialStatusList = [menikah, single, dudaOrJanda];
+
   // home status
   static const sendiri = 'Sendiri';
   static const orangTua = 'Orang Tua';
   static const keluarga = 'Keluarga';
   static const kontrakOrKost = 'Kontrak / Kost';
   static const perusahaan = 'Perusahaan';
+
+  static const homeStatusList = [
+    sendiri,
+    orangTua,
+    keluarga,
+    kontrakOrKost,
+    perusahaan
+  ];
 
   static const homeStatus = {
     sendiri: 5,
@@ -26,12 +36,16 @@ class TScore {
   static const entrepreneur = 'Entrepreneur';
   static const professional = 'Professional';
 
+  static const pekerjaanList = [employee, entrepreneur, professional];
+
   static const pekerjaan = {employee: 10, entrepreneur: 0, professional: -4};
 
   // asset
   static const beat = 'BEAT';
   static const vario = 'VARIO';
   static const scoopy = 'SCOOPY';
+
+  static const motorList = [beat, vario, scoopy];
 
   static const otr = {
     beat: 22000000,
@@ -41,16 +55,20 @@ class TScore {
 
   static const minimalUangMuka = {
     beat: 2200000,
-    vario:2600000,
+    vario: 2600000,
     scoopy: 2500000
   };
 
   // tenor
   static const tenor = {12: 32, 24: -1, 36: -9, 48: -26};
 
+  static const tenorList = ['12', '24', '36', '48'];
+
   // kredit aktif
   static const ya = 'Ya';
   static const tidak = 'Tidak';
+
+  static const yaTidakOption = [ya, tidak];
 
   // penyedia fasilitas kredit
   static const bank = 'Bank';

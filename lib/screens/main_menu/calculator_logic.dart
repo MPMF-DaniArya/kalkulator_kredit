@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kalkulator_kredit/screens/main_menu/calculator_state.dart';
+import 'package:kalkulator_kredit/screens/main_menu/hasil_analisa_screen.dart';
 import 'package:kalkulator_kredit/utils/constant/score.dart';
 import 'package:kalkulator_kredit/utils/functions/my_helper_function.dart';
 
@@ -12,6 +13,10 @@ class CalculatorLogic extends GetxController {
   var actionUser = ''.obs;
 
   void hitungCreditScoreUser() {
+    creditScoreUser = 0.obs;
+    risikoUser = ''.obs;
+    actionUser = ''.obs;
+
     final isValid = state.formkey!.currentState!.validate();
     if (!isValid) return;
     state.formkey!.currentState!.save();
@@ -61,7 +66,7 @@ class CalculatorLogic extends GetxController {
     // 2. ASSET
     // ==========================================
     if (state.selectedBrandMotor == null || state.selectedTenor == null) {
-      Get.snackbar('Info', 'Mohon lengkapi data asset');
+      Get.snackbar('Info', 'Mohon lengkapi data kendaraan');
       return;
     }
 
@@ -101,6 +106,14 @@ class CalculatorLogic extends GetxController {
     if (punyaKredit) {
       int check(String? val) => (val == "1" || val == "Ya") ? 1 : 0;
 
+      if (state.selectedApakahBank == null ||
+          state.selectedApakahMultifinance == null ||
+          state.selectedApakahFintech == null ||
+          state.selectedApakahLainnya == null) {
+        Get.snackbar('Info', 'Mohon lengkapi data riwayat kredit');
+        return;
+      }
+
       int scorePenyedia = HistoryKredit.scorePenyediaFasilitasKredit(
           isBank: check(state.selectedApakahBank),
           isMultifinance: check(state.selectedApakahMultifinance),
@@ -135,8 +148,11 @@ class CalculatorLogic extends GetxController {
     String? action = TScore.kategoriRisk[finalGrade];
     actionUser.value = finalGrade == TScore.a2 || finalGrade == TScore.a1
         ? TScore.kategoriAction[finalGrade]!
-        : TScore.kategoriAction[action]! ?? 'Action tidak diketahui';
+        : TScore.kategoriAction[action] ?? 'Action tidak diketahui';
+
     update();
+
+    Get.to(() => const HasilAnalisaScreen());
   }
 
   Future<void> selectTanggalLahir(BuildContext context) async {
