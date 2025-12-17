@@ -8,8 +8,8 @@ void main() {
       () {
         expect(
             HistoryKredit.scorePenyediaFasilitasKredit(
-                isBank: -7, isMultifinance: -8, isFintech: -21),
-            0);
+                isBank: 1, isMultifinance: 1, isFintech: 1),
+            -36);
       },
     );
     test(
@@ -19,6 +19,16 @@ void main() {
             HistoryKredit.scoreFasilitasKreditAktif(
                 scorePenyediaFasilitasKredit: -36),
             -38);
+      },
+    );
+    test(
+      'test history kredit aktif',
+      () {
+        expect(
+            HistoryKredit.scoreKeseluruhanHistoryKreditAktif(
+                scoreFasilitasKreditAktif: -38,
+                scoreKeterlambatanBayar: -41),
+            -79);
       },
     );
   });

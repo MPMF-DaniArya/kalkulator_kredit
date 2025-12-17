@@ -127,6 +127,7 @@ class TScore {
     veryHighRisk: reject,
     averageRisk: needSurveyAndCreditCommitteeReview,
     veryLowRisk: needSurvey,
+    lowRisk: needSurvey,
     a2: instantApproval,
     a1: instantApproval
   };

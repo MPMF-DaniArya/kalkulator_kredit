@@ -24,6 +24,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     final state = Get.find<CalculatorLogic>().state;
     final textTheme = Theme.of(context).textTheme;
     const estimasiHargaMotor = TScore.otr;
+    print(logic.creditScoreUser.value);
 
     return Scaffold(
       extendBodyBehindAppBar: true,

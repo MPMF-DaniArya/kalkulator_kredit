@@ -9,12 +9,14 @@ import 'package:kalkulator_kredit/utils/functions/my_helper_function.dart';
 class CalculatorLogic extends GetxController {
   final CalculatorState state = CalculatorState();
   var creditScoreUser = 0.obs;
-  var risikoUser = ''.obs;
+  var kodeRisikoUser = ''.obs;
+  var namaRisikoUser = ''.obs;
   var actionUser = ''.obs;
 
   void hitungCreditScoreUser() {
     creditScoreUser = 0.obs;
-    risikoUser = ''.obs;
+    kodeRisikoUser = ''.obs;
+    namaRisikoUser = ''.obs;
     actionUser = ''.obs;
 
     final isValid = state.formkey!.currentState!.validate();
@@ -144,11 +146,11 @@ class CalculatorLogic extends GetxController {
     String finalGrade = ScoreKredit.riskGrade(totalScore: finalScore);
 
     creditScoreUser.value = finalScore;
-    risikoUser.value = finalGrade;
-    String? action = TScore.kategoriRisk[finalGrade];
+    kodeRisikoUser.value = finalGrade;
+    namaRisikoUser.value = TScore.kategoriRisk[finalGrade]!;
     actionUser.value = finalGrade == TScore.a2 || finalGrade == TScore.a1
         ? TScore.kategoriAction[finalGrade]!
-        : TScore.kategoriAction[action] ?? 'Action tidak diketahui';
+        : TScore.kategoriAction[namaRisikoUser.value] ?? 'Action tidak diketahui';
 
     update();
 

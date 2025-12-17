@@ -9,10 +9,10 @@ void main() {
       () {
         expect(
             ScoreKredit.totalScore(
-                totalKategori1: 10,
-                totalKategori2: 18,
+                totalKategori1: 19,
+                totalKategori2: 51,
                 totalKategori3: -79),
-            567);
+            609);
       },
     );
     test(

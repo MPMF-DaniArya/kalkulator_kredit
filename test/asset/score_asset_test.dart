@@ -50,8 +50,8 @@ void main() {
         () {
           expect(
               Asset.scoreKeseluruhanAsset(
-                  scoreUangMuka: 15, scoreTenor: -1, scoreNtf: 4),
-              18);
+                  scoreUangMuka: 15, scoreTenor: 32, scoreNtf: 4),
+              51);
         },
       );
     },
